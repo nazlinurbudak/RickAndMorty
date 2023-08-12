@@ -1,0 +1,19 @@
+
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+Å
+Qapp/src/main/java/com/nazlibudak/rickandmorty_app/services/CharacterApiService.kt,5/5/5559df23ca786f1a3ecfd0ea54d0ec72942ee36e
+u
+Eapp/src/main/java/com/nazlibudak/rickandmorty_app/common/Constants.kt,9/a/9a27566cb002f902e04a1eb2a886608dd9791387
+É
+Sapp/src/main/java/com/nazlibudak/rickandmorty_app/services/CharacterApiInterface.kt,d/8/d8b9d0fbbc12a6a94236d31a49358355bd971c62
+{
+Kapp/src/main/java/com/nazlibudak/rickandmorty_app/data/CharacterResponse.kt,5/3/5313afdc987519404db79bd40644ed2c1312b404
+s
+Capp/src/main/java/com/nazlibudak/rickandmorty_app/data/Character.kt,a/d/ad25cc5876766769b34bb4a5a8e575653dbb5870
+x
+Happ/src/main/java/com/nazlibudak/rickandmorty_app/ui/CharacterAdapter.kt,e/a/ea0bc2df4c6253333f633ba65da65db40c6e0385
+}
+Mapp/src/main/java/com/nazlibudak/rickandmorty_app/data/CharacterRepository.kt,1/4/14f3050e2250911dc0712a2202b2fd8a14bb9faa
+z
+Japp/src/main/java/com/nazlibudak/rickandmorty_app/ui/CharacterViewModel.kt,d/9/d966c5ca1f38513327f8b4bdbc0931b8f6bfa868
