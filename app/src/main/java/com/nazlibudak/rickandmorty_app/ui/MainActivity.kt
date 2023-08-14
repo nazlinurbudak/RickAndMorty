@@ -1,24 +1,29 @@
 package com.nazlibudak.rickandmorty_app.ui
 
-import  androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nazlibudak.rickandmorty_app.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.nazlibudak.rickandmorty_app.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<CharacterViewModel>()
+    private val adapter by lazy { CharacterAdapter(emptyList()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        rv_characters_list.layoutManager = LinearLayoutManager(this)
-        rv_characters_list.setHasFixedSize(true)
-        viewModel.characterList.observe(this, Observer { characters ->
-            rv_characters_list.adapter = CharacterAdapter(characters)
-        })
+        binding.rvCharactersList.layoutManager = LinearLayoutManager(this)
+        binding.rvCharactersList.adapter = adapter
+
+        viewModel.characterList.observe(this) {
+            adapter.updateList(it)
+        }
+
     }
 }

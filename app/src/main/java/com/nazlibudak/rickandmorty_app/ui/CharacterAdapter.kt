@@ -5,39 +5,43 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.nazlibudak.rickandmorty_app.R
 import com.nazlibudak.rickandmorty_app.data.Character
-import kotlinx.android.synthetic.main.character_item.view.*
+import com.nazlibudak.rickandmorty_app.databinding.CharacterItemBinding
 
 class CharacterAdapter(
-    private val characters : List<Character>
-) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>(){
-
-    class CharacterViewHolder(view:View) : RecyclerView.ViewHolder(view){
+    private var characters: List<Character>
+) : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
 
 
-        fun bindCharacter(character : Character) {
-            itemView.character_name.text = character.name
-            Glide.with(itemView).load(character.image).into(itemView.character_image)
+    class CharacterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = CharacterItemBinding.bind(view)
 
+        fun bind(character: Character) {
+            binding.characterName.text = character.name
+            Glide.with(binding.root.context).load(character.image).into(binding.characterImage)
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        return CharacterViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.character_item,
-                parent, false)
-        )
+        val binding =
+            CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CharacterViewHolder(binding.root)
+
+    }
+
+    fun updateList(character: List<Character>) {
+        this.characters = character
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = characters.size
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.bindCharacter(characters.get(position))
-    }
+        val currentItem = characters[position]
+        holder.bind(currentItem)
 
+    }
 
 
 }
